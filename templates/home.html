@@ -1,35 +1,33 @@
 <html>
-    <body>
-        <h1>Add book</h1>
-        <form method="POST" action=".">
-            <input type="text" name="title">
-            <input type="submit" value="Add">
-        </form>
-        <h1>Existing books</h1>
-        <table>
-            {% for book in books %}
-            <tr>
+  <body>
+    <h1>Add book</h1>
+    <form method="POST" action="/">
+      <input type="text" name="title">
+      <input type="submit" value="Add">
+    </form>
 
-                <form method="POST" action="./delete" style="display: inline">
-                    <td>
-                        {{book.title}} 
-                    </td>
-                    <td>
-                        <input type="hidden" value="{{book.title}}" name="title">
-                        <input type="submit" value="Delete" style="display: inline">
-                    </td>
-                </form>
-
-                <td>
-
-                    <form method="POST" action="./update" style="display: inline">
-                        <input type="hidden" value="{{book.title}}" name="oldtitle">
-                        <input type="text" value="{{book.title}}" name="newtitle">
-                        <input type="submit" value="Update">
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
+    <h1>Books</h1>
+    <table>
+      {% for book in books %}
+        <tr>
+          <td>
+            {{book.title}} 
+          </td>
+          <td>
+            <form method="POST" action="./update" style="display: inline">
+              <input type="hidden" value="{{book.title}}" name="oldtitle">
+              <input type="text" value="{{book.title}}" name="newtitle">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{book.title}}" name="title">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
         </tr>
-    </body>
+        {% endfor %}
+    </table>
+  </body>
 </html>
