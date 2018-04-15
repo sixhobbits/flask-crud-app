@@ -58,4 +58,5 @@ def delete():
 
 
 if __name__ == "__main__":
+    db.create_all()    # SQL Alchemy initiation for initial configuration
     app.run(debug=True)
